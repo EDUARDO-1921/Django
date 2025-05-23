@@ -1,0 +1,11 @@
+<!-- vistaAgregarGenero.html -->
+<form method="post" action="{% url 'vistaAgregarGenero' %}">
+  {% csrf_token %}
+  <label for="txtNombre">Nombre del género:</label>
+  <input type="text" name="txtNombre" id="txtNombre">
+  <button type="submit">Agregar</button>
+</form>
+
+{% if mensaje %}
+  <p>{{ mensaje }}</p>
+{% endif %}

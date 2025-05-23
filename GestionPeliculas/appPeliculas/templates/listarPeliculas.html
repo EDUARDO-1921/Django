@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Películas</title>
+  <!-- Incluye FontAwesome para los iconos -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: center; }
+    th { background: #eee; }
+    .acciones a { margin: 0 5px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Películas Registradas</h1>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Protagonista</th>
+        <th>Duración</th>
+        <th>Resumen</th>
+        <th>Foto</th>
+        <th>Género</th>
+        <th>Acción</th>  <!-- ← Aquí añadimos la columna Acción -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in peliculas %}
+      <tr>
+        <td>{{ p.pelCodigo }}</td>
+        <td>{{ p.pelTitulo }}</td>
+        <td>{{ p.pelProtagonista }}</td>
+        <td>{{ p.pelDuracion }}</td>
+        <td>{{ p.pelResumen }}</td>
+        <td>
+          <img src="/media/{{ p.pelFoto }}" alt="" width="100" height="100">
+        </td>
+        <td>{{ p.pelGenero.genNombre }}</td>
+        <td class="text-center">
+            <a href="/consultarPelicula/{{p.id}}/"><i class="fa fa-edit text-warning"
+                title="editar"></i></a>
+                <i class="fa fa-trash text-danger" title="eliminar"
+                onclick="eliminarPelicula('{{p.id}}')"></i>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

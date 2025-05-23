@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar Película</title>
+  <!-- Opcional: tus estilos o Bootstrap aquí -->
+</head>
+<body>
+  <div class="container">
+    <h3>ACTUALIZAR PELÍCULA</h3>
+    <form action="{% url 'actualizarPelicula' %}"
+          method="post"
+          enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- Campo oculto con el ID de la película -->
+      <input type="hidden" name="idPelicula" value="{{ pelicula.id }}">
+
+      <div>
+        <label for="txtCodigo">Código:</label>
+        <input type="text"
+               id="txtCodigo"
+               name="txtCodigo"
+               value="{{ pelicula.pelCodigo }}"
+               required>
+      </div>
+
+      <div>
+        <label for="txtTitulo">Título:</label>
+        <input type="text"
+               id="txtTitulo"
+               name="txtTitulo"
+               value="{{ pelicula.pelTitulo }}"
+               required>
+      </div>
+
+      <div>
+        <label for="txtProtagonista">Protagonista:</label>
+        <input type="text"
+               id="txtProtagonista"
+               name="txtProtagonista"
+               value="{{ pelicula.pelProtagonista }}"
+               required>
+      </div>
+
+      <div>
+        <label for="txtDuracion">Duración (min):</label>
+        <input type="number"
+               id="txtDuracion"
+               name="txtDuracion"
+               value="{{ pelicula.pelDuracion }}"
+               required>
+      </div>
+
+      <div>
+        <label for="txtResumen">Resumen:</label>
+        <textarea id="txtResumen"
+                  name="txtResumen"
+                  rows="4"
+                  required>{{ pelicula.pelResumen }}</textarea>
+      </div>
+
+      <div>
+        <label>Foto Actual:</label><br>
+        <img src="/media/{{ pelicula.pelFoto }}"
+             alt="Foto de {{ pelicula.pelTitulo }}"
+             width="120" height="120"><br><br>
+
+        <label for="fileFoto">Reemplazar Foto:</label>
+        <input type="file"
+               id="fileFoto"
+               name="fileFoto"
+               accept="image/*">
+      </div>
+
+      <div>
+        <label for="cbGenero">Género:</label>
+        <select id="cbGenero" name="cbGenero" required>
+          {% for g in generos %}
+            <option value="{{ g.id }}"
+              {% if g.id == pelicula.pelGenero.id %}selected{% endif %}>
+              {{ g.genNombre }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <br>
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Película</title>
+
+</head>
+<body>
+  <div class="container">
+    <h3>AGREGAR PELÍCULA</h3>
+    <form action="/agregarPelicula/"
+          method="post"
+          enctype="multipart/form-data">
+      {% csrf_token %}
+      <div>
+        <label for="txtCodigo" class="fw-bold">Código:</label>
+        <input type="text" name="txtCodigo" id="txtCodigo" class="form-control" required>
+      </div>
+      <div>
+        <label for="txtTitulo" class="fw-bold">Título:</label>
+        <input type="text" name="txtTitulo" id="txtTitulo" class="form-control" required>
+      </div>
+      <div>
+        <label for="txtProtagonista" class="fw-bold">Protagonista:</label>
+        <input type="text" name="txtProtagonista" id="txtProtagonista" class="form-control" required>
+      </div>
+      <div>
+        <label for="txtDuracion" class="fw-bold">Duración:</label>
+        <input type="number" name="txtDuracion" id="txtDuracion" class="form-control" required>
+      </div>
+      <div>
+        <label for="txtResumen" class="fw-bold">Resumen:</label>
+        <textarea name="txtResumen" id="txtResumen" cols="30" rows="5" class="form-control" required></textarea>
+      </div>
+      <div>
+        <label for="fileFoto" class="fw-bold">Foto:</label>
+        <input type="file" name="fileFoto" id="fileFoto" class="form-control" accept="image/*" required>
+      </div>
+      <div>
+        <label for="cbGenero" class="fw-bold">Género:</label>
+        <select name="cbGenero" id="cbGenero" class="form-control" required>
+          {% for g in generos %}
+            <option value="{{ g.id }}">{{ g.genNombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Agregar Película</button>
+    </form>
+  </div>
+</body>
+</html>
