@@ -16,7 +16,8 @@ urlpatterns = [
     path('agregarPelicula/', views.agregarPelicula,),
     path('vistaAgregarPelicula/', views.vistaAgregarPelicula,),
   path('consultarPelicula/<int:id>/', views.consultarPeliculaPorId,),
-
+  path('actualizarPelicula/', views.actualizarPelicula),
+  path('eliminarPelicula/<int:id>/', views.eliminarPelicula),
 
 ]
 
@@ -26,3 +27,4 @@ if settings.DEBUG:
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT
     )
+
