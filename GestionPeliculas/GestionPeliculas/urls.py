@@ -4,7 +4,7 @@ from appPeliculas import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-# Importa la vista que usarás
+
 from appPeliculas.views import inicio, agregarGenero
 
 urlpatterns = [
@@ -21,7 +21,7 @@ urlpatterns = [
 
 ]
 
-# Sólo en DEBUG sirve los archivos media
+
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL,

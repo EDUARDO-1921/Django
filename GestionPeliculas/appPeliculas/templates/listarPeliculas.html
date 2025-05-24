@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Listado de Películas</title>
-  <!-- Incluye FontAwesome para los iconos -->
+  
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Tus estilos internos -->
+ 
   <style>
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #444; padding: 8px; text-align: center; }
     th { background: #eee; }
     .acciones a { margin: 0 5px; text-decoration: none; }
 
-    /* Solo se añaden estos dos estilos de color */
+    
     .text-warning { color: yellow; }
     .text-danger  { color: red;    }
   </style>
-  <!-- Tu script principal -->
+ 
   <script src="{% static 'js/app.js' %}"></script>
 </head>
 <body>
-  <!-- SweetAlert2 -->
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <h1>Películas Registradas</h1>
@@ -51,7 +51,7 @@
           <img src="/media/{{ p.pelFoto }}" alt="" width="50" height="50">
         </td>
         <td>{{ p.pelGenero.genNombre }}</td>
-        <!-- Bloque de acciones -->
+        
         <td class="text-center">
           <a href="/consultarPelicula/{{ p.id }}/">
             <i class="fa fa-edit text-warning" title="editar"></i>

@@ -16,19 +16,15 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# para almacenar los archivos multimedia 
+
 MEDIA_URL='/media/'
-
-#para recuperar los archivos multimedia 
+ 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'django-insecure-zfj+(x5722e4q)_()9g5z1zbc-h-^3mj&+#d-x@o60ovoxz&!d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
