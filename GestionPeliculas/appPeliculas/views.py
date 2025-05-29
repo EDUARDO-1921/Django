@@ -33,6 +33,7 @@ def agregarGenero(request):
         mensaje = str(error)
 
     retorno = {"mensaje": mensaje}
+    #return JsonResponse(retorno)
     return render(request, "agregarGenero.html",retorno)
 
 
@@ -49,6 +50,7 @@ def listarPeliculas(request):
     peliculas = Pelicula.objects.all()
     print(peliculas)  # para revisar en la consola
     retorno = {"peliculas": peliculas}
+    #retorno JsonResponse (retorno, content_type='aplication')
     return render(request, "listarPeliculas.html", retorno)
 
 @csrf_exempt
@@ -132,7 +134,8 @@ def eliminarPelicula(request, id):
         peliculaAEliminar = Pelicula.objects.get(pk=id)
         peliculaAEliminar.delete()
         mensaje= "Pelicula Eliminada Correctamente"
+        return redirect('/listarPeliculas')
     except Exception as error:
         mensaje=str(error)
         retorno={"mensaje":mensaje}
-        return redirect('/listarPeliculas')
+        
